@@ -1,0 +1,46 @@
+package com.ebit.project.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.ebit.project.model.User;
+import com.ebit.project.service.ValidatinService;
+
+@RestController
+public class ValidationController {
+	
+	@Autowired
+	private ValidatinService myService;
+	
+	@GetMapping("/user")
+	public List<User> getData(){
+		return myService.getData();
+	}
+	
+	
+	@PostMapping("/user")
+	public User enterData(@RequestBody User user) {
+		return myService.enterData(user);
+	}
+	
+	@PutMapping("/user/{id}")
+	public String updateData(@PathVariable int id, @RequestBody User user) {
+		myService.updateData(id, user);
+		return "data updated";
+	}
+	
+	@DeleteMapping("/user")
+	public String deleteAllData() {
+		myService.deleteAllData();
+		return "data deleted";
+	}
+
+}

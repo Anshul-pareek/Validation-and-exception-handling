@@ -1,0 +1,37 @@
+package com.ebit.project.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ebit.project.model.User;
+import com.ebit.project.repo.ValidationRepo;
+
+@Service
+public class ValidatinService {
+	
+	@Autowired
+	private ValidationRepo myRepo;
+
+	public List<User> getData() {
+		return myRepo.findAll();
+	}
+
+	public User enterData(User user) {
+		return myRepo.save(user);
+	}
+
+	public User updateData(int id, User user) {
+		User data = myRepo.findUserById(id);
+
+		if (data != null) {
+			data.setName(user.getName());
+			data.setEmail(user.getEmail());
+			data.setMobileno(user.getMobileno());
+			data.setAge(user.getAge());
+		}
+		return myRepo.save(data);
+	}
+
+}

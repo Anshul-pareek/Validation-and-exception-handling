@@ -1,0 +1,5 @@
+package com.ebit.project.advice;
+
+public class ExceptionAdvice {
+
+}

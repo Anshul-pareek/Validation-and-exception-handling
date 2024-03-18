@@ -1,0 +1,11 @@
+package com.ebit.project.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
+
+import com.ebit.project.model.User;
+
+@Service
+public interface validationRepo extends JpaRepository<User, Integer>{
+
+}
